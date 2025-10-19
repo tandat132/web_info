@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import FilterBar from '@/components/ui/FilterBar';
 import ProfileCard from '@/components/ui/ProfileCard';
+import ParticlesBackground from '@/components/ui/ParticlesBackground';
 import { IProfile } from '@/models/Profile';
 import { REGIONS, PROVINCES, DEFAULT_OCCUPATIONS } from '@/lib/constants';
 import { slugToOccupation, occupationToSlug, slugToTag, tagToSlug } from '@/lib/utils';
+import { HeartIcon, FireIcon, DiamondIcon, WineIcon, RoseIcon, LipsIcon, GemIcon, SparkleIcon } from '@/components/ui/SeductiveIcons';
 
 interface RegionPageContentProps {
   regionSlug?: string;
@@ -420,26 +422,73 @@ export default function RegionPageContent({
       </nav>
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-pink-50 to-purple-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+      <section className="bg-gradient-to-br from-pink-500 via-rose-500 to-purple-600 text-white py-20 relative overflow-hidden">
+        {/* Particles Background */}
+        <ParticlesBackground 
+          particleCount={60}
+          colors={['rgba(255, 255, 255, 0.15)', 'rgba(255, 182, 193, 0.2)', 'rgba(147, 51, 234, 0.15)']}
+          speed={0.3}
+        />
+        
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-500/90 via-rose-500/90 to-purple-600/90 animate-gradient-shift"></div>
+        
+        {/* Glassmorphism Floating Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-20 h-20 glass rounded-full animate-float neon-glow" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+          <div className="absolute top-32 right-20 w-16 h-16 glass rounded-full animate-float neon-glow-purple" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 glass rounded-full animate-float" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
+          <div className="absolute top-1/2 right-1/3 w-8 h-8 glass rounded-full animate-float" style={{ animationDelay: '1.5s', animationDuration: '3.5s' }}></div>
+          <div className="absolute bottom-32 right-10 w-14 h-14 glass rounded-full animate-float animate-pulse-glow" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }}></div>
+          
+          {/* Floating Professional Icons */}
+          <div className="floating-icon absolute top-20 left-1/3 text-red-500/60 animate-float" style={{ animationDelay: '0.5s', animationDuration: '4s' }}>
+            <LipsIcon size={28} />
+          </div>
+          <div className="floating-icon absolute bottom-40 right-1/4 text-orange-500/70 animate-float" style={{ animationDelay: '2s', animationDuration: '5s' }}>
+            <FireIcon size={24} />
+          </div>
+          <div className="floating-icon absolute top-1/3 left-20 text-pink-500/60 animate-float" style={{ animationDelay: '1.5s', animationDuration: '3.5s' }}>
+            <HeartIcon size={20} />
+          </div>
+          <div className="floating-icon absolute top-1/2 right-20 text-purple-500/60 animate-float" style={{ animationDelay: '3s', animationDuration: '4.5s' }}>
+            <SparkleIcon size={24} />
+          </div>
+          <div className="floating-icon absolute bottom-20 left-1/4 text-emerald-500/60 animate-float" style={{ animationDelay: '1s', animationDuration: '3s' }}>
+            <RoseIcon size={20} />
+          </div>
+          <div className="floating-icon absolute bottom-1/3 right-16 text-cyan-500/60 animate-float" style={{ animationDelay: '3s', animationDuration: '4.5s' }}>
+            <DiamondIcon size={24} />
+          </div>
+          <div className="floating-icon absolute top-40 right-1/3 text-amber-500/60 animate-float" style={{ animationDelay: '2.5s', animationDuration: '3.8s' }}>
+            <WineIcon size={20} />
+          </div>
+          <div className="floating-icon absolute bottom-1/2 left-16 text-indigo-500/60 animate-float" style={{ animationDelay: '4s', animationDuration: '4.2s' }}>
+            <GemIcon size={22} />
+          </div>
+        </div>
+        
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h1 className="hero-title text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-pink-100 to-rose-100 bg-clip-text text-transparent drop-shadow-lg animate-sultry-glow">
             {pageTitle}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-600 max-w-3xl mx-auto">
-            Khám phá bộ sưu tập gái xinh, gái đẹp chất lượng cao. 
-            {totalCount > 0 && ` Tìm thấy ${totalCount} hồ sơ phù hợp.`}
-          </p>
+          <div className="mb-8 glass-seductive rounded-2xl p-6 animate-sensual-pulse">
+            <p className="text-xl md:text-2xl text-white/90 font-medium animate-sultry-glow">
+              <span className="bg-gradient-to-r from-pink-200 via-rose-200 to-purple-200 bg-clip-text text-transparent">
+                Khám phá bộ sưu tập gái xinh, gái đẹp chất lượng cao
+                {totalCount > 0 && ` • ${totalCount} hồ sơ phù hợp`}
+              </span>
+            </p>
+          </div>
           <div className="flex justify-center space-x-4">
-            <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700">
+            <div className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium text-white/90 border border-white/30">
               {totalCount} hồ sơ
             </div>
-            <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700">
+            <div className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium text-white/90 border border-white/30">
               Cập nhật liên tục
             </div>
           </div>
         </div>
-        
-
       </section>
       
       {/* Filter Bar */}

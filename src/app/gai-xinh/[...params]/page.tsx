@@ -178,9 +178,6 @@ export default async function GaiXinhPage({ params, searchParams }: PageProps) {
 export async function generateStaticParams() {
   const params: { params: string[] }[] = [];
   
-  // Base page
-  params.push({ params: [] });
-  
   // Region pages
   REGIONS.forEach(region => {
     params.push({ params: [region.slug] });
