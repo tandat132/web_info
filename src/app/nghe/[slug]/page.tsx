@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import OccupationPageContent from '@/components/occupation/OccupationPageContent';
 import { slugToOccupation, occupationToSlug } from '@/lib/utils';
 import { DEFAULT_OCCUPATIONS } from '@/lib/constants';
@@ -49,7 +50,19 @@ export default function OccupationPage({ params }: OccupationPageProps) {
     notFound();
   }
 
-  return <OccupationPageContent occupation={occupation} />;
+  return (
+    <Suspense fallback={
+      <div className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-center py-20">
+            <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+          </div>
+        </div>
+      </div>
+    }>
+      <OccupationPageContent occupation={occupation} />
+    </Suspense>
+  );
 }
 
 export async function generateStaticParams() {
