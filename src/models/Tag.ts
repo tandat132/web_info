@@ -54,8 +54,7 @@ const TagSchema = new Schema<ITag>({
 });
 
 // Indexes for performance
-TagSchema.index({ name: 1 });
-TagSchema.index({ slug: 1 });
+// Note: name and slug already have unique indexes from schema definition
 TagSchema.index({ isActive: 1, count: -1 });
 TagSchema.index({ count: -1 });
 

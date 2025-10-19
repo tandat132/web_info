@@ -121,8 +121,8 @@ const ProfileSchema = new Schema<IProfile>({
   publishedAt: { type: Date }
 });
 
-// Indexes for SEO and performance
-ProfileSchema.index({ slug: 1 });
+// Indexes for performance
+// Note: slug already has unique index from schema definition
 ProfileSchema.index({ region: 1, province: 1 });
 ProfileSchema.index({ occupation: 1 });
 ProfileSchema.index({ occupationSlug: 1 });

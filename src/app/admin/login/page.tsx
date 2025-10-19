@@ -24,7 +24,8 @@ export default function AdminLogin() {
       });
 
       if (response.ok) {
-        router.push('/admin');
+        // Force a hard redirect to ensure cookie is properly set
+        window.location.href = '/admin';
       } else {
         const data = await response.json();
         setError(data.error || 'Đăng nhập thất bại');

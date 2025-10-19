@@ -38,9 +38,10 @@ export async function POST(request: NextRequest) {
     // Set admin token cookie (in production, use JWT)
     response.cookies.set('admin-token', 'authenticated', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: false, // Set to false for local testing, change to true only for HTTPS production
+      sameSite: 'lax', // Changed from 'strict' to 'lax' for better compatibility
       maxAge: 60 * 60 * 24, // 24 hours
+      path: '/', // Explicitly set path
     });
 
     return response;
