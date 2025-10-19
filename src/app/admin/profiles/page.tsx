@@ -637,12 +637,10 @@ function ProfileModal({
               <input
                 type="number"
                 required
-                min="18"
-                max="50"
                 value={formData.age}
                 onChange={(e) => setFormData({...formData, age: Number(e.target.value)})}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white placeholder-gray-500"
-                placeholder="18"
+                placeholder="Nhập tuổi"
               />
             </div>
 

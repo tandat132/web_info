@@ -153,9 +153,9 @@ export default function ProfilePage() {
               {isFavorite ? (
                 <HeartSolidIcon className="h-5 w-5 text-red-500" />
               ) : (
-                <HeartIcon className="h-5 w-5 text-gray-400" />
+                <HeartIcon className="h-5 w-5 text-gray-600" />
               )}
-              <span className="text-sm font-medium">
+              <span className="text-sm font-medium text-gray-900">
                 {isFavorite ? 'Đã yêu thích' : 'Yêu thích'}
               </span>
             </button>
@@ -192,7 +192,7 @@ export default function ProfilePage() {
                   <div className="text-3xl font-bold text-pink-600">
                     {profile.age} tuổi
                   </div>
-                  <div className="text-sm text-gray-500 flex items-center justify-end">
+                  <div className="text-sm text-gray-700 flex items-center justify-end">
                     <MapPinIcon className="h-4 w-4 mr-1" />
                     {profile.province}
                   </div>
@@ -204,27 +204,27 @@ export default function ProfilePage() {
                 <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-purple-50 rounded-lg border border-pink-100">
                   <UserIcon className="h-6 w-6 text-pink-600 mx-auto mb-2" />
                   <div className="text-lg font-semibold text-gray-900">{profile.age}</div>
-                  <div className="text-sm text-gray-500">Tuổi</div>
+                  <div className="text-sm text-gray-700">Tuổi</div>
                 </div>
                 
                 {profile.height && (
                   <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
                     <div className="text-lg font-semibold text-gray-900">{profile.height}cm</div>
-                    <div className="text-sm text-gray-500">Chiều cao</div>
+                    <div className="text-sm text-gray-700">Chiều cao</div>
                   </div>
                 )}
                 
                 {profile.weight && (
                   <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border border-green-100">
                     <div className="text-lg font-semibold text-gray-900">{profile.weight}kg</div>
-                    <div className="text-sm text-gray-500">Cân nặng</div>
+                    <div className="text-sm text-gray-700">Cân nặng</div>
                   </div>
                 )}
                 
                 <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-lg border border-orange-100">
                   <BriefcaseIcon className="h-6 w-6 text-orange-600 mx-auto mb-2" />
                   <div className="text-sm font-semibold text-gray-900">{profile.occupation}</div>
-                  <div className="text-sm text-gray-500">Nghề nghiệp</div>
+                  <div className="text-sm text-gray-700">Nghề nghiệp</div>
                 </div>
               </div>
 
@@ -290,8 +290,8 @@ export default function ProfilePage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 text-gray-500">
-                  <UserIcon className="h-16 w-16 mx-auto mb-4 text-gray-300" />
+                <div className="text-center py-12 text-gray-700">
+                  <UserIcon className="h-16 w-16 mx-auto mb-4 text-gray-400" />
                   <p>Chưa có ảnh nào được tải lên</p>
                 </div>
               )}
@@ -306,34 +306,34 @@ export default function ProfilePage() {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tên:</span>
-                  <span className="font-medium">{profile.name}</span>
+                  <span className="font-medium text-gray-900">{profile.name}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tuổi:</span>
-                  <span className="font-medium">{profile.age}</span>
+                  <span className="font-medium text-gray-900">{profile.age}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Khu vực:</span>
-                  <span className="font-medium">{regionNames[profile.region] || profile.region || 'Chưa xác định'}</span>
+                  <span className="font-medium text-gray-900">{regionNames[profile.region] || profile.region || 'Chưa xác định'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tỉnh/TP:</span>
-                  <span className="font-medium">{profile.province}</span>
+                  <span className="font-medium text-gray-900">{profile.province}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Nghề nghiệp:</span>
-                  <span className="font-medium">{profile.occupation}</span>
+                  <span className="font-medium text-gray-900">{profile.occupation}</span>
                 </div>
                 {profile.height && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">Chiều cao:</span>
-                    <span className="font-medium">{profile.height}cm</span>
+                    <span className="font-medium text-gray-900">{profile.height}cm</span>
                   </div>
                 )}
                 {profile.weight && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">Cân nặng:</span>
-                    <span className="font-medium">{profile.weight}kg</span>
+                    <span className="font-medium text-gray-900">{profile.weight}kg</span>
                   </div>
                 )}
               </div>
@@ -373,7 +373,7 @@ export default function ProfilePage() {
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                              <UserIcon className="h-8 w-8 text-gray-400" />
+                              <UserIcon className="h-8 w-8 text-gray-600" />
                             </div>
                           )}
                         </div>
@@ -386,7 +386,7 @@ export default function ProfilePage() {
                               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
                               {relatedProfile.age} tuổi • {relatedProfile.occupation}
                             </p>
-                            <p className="text-xs text-gray-500 flex items-center">
+                            <p className="text-xs text-gray-700 flex items-center">
                               <MapPinIcon className="h-3 w-3 mr-1" />
                               {relatedProfile.province}
                             </p>
@@ -401,7 +401,7 @@ export default function ProfilePage() {
                                   </span>
                                 ))}
                                 {relatedProfile.tags.length > 2 && (
-                                  <span className="text-xs text-gray-400">+{relatedProfile.tags.length - 2}</span>
+                                  <span className="text-xs text-gray-700">+{relatedProfile.tags.length - 2}</span>
                                 )}
                               </div>
                             )}

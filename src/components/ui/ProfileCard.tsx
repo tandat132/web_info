@@ -126,7 +126,7 @@ export default function ProfileCard({ profile, priority = false }: ProfileCardPr
                     </span>
                   ))}
                   {profile.tags.length > 3 && (
-                    <span className="inline-flex items-center text-xs text-gray-500 bg-gray-100/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-gray-200/50 transform group-hover:scale-105 transition-all duration-300">
+                    <span className="inline-flex items-center text-xs text-gray-800 bg-gray-100/80 backdrop-blur-sm px-3 py-1.5 rounded-full font-medium border border-gray-200/50 transform group-hover:scale-105 transition-all duration-300">
                       +{profile.tags.length - 3}
                     </span>
                   )}
@@ -134,7 +134,7 @@ export default function ProfileCard({ profile, priority = false }: ProfileCardPr
               )}
               {profile.tags.length === 0 && (
                 <div className="h-8 flex items-center">
-                  <span className="text-xs text-gray-400 italic">Chưa có đặc điểm</span>
+                  <span className="text-xs text-gray-700 italic">Chưa có đặc điểm</span>
                 </div>
               )}
             </div>

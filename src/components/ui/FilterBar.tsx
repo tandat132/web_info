@@ -73,6 +73,17 @@ export default function FilterBar({
   const [uniqueTags, setUniqueTags] = useState<Tag[]>([]);
   const [tagsLoading, setTagsLoading] = useState(false);
 
+  // Age ranges for filtering
+  const ageRanges = [
+    { value: '<18', label: 'Dưới 18 tuổi' },
+    { value: '18-22', label: '18-22 tuổi' },
+    { value: '23-26', label: '23-26 tuổi' },
+    { value: '27-30', label: '27-30 tuổi' },
+    { value: '30-34', label: '30-34 tuổi' },
+    { value: '30-40', label: '30-40 tuổi' },
+    { value: '>40', label: 'Trên 40 tuổi' }
+  ];
+
   // Fetch unique tags from API only once when component mounts
   useEffect(() => {
     const fetchTags = async () => {
@@ -323,11 +334,11 @@ export default function FilterBar({
                 <select
                   value={filters.region}
                   onChange={(e) => handleFilterChange('region', e.target.value)}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 transition-colors hover:border-gray-400"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500 transition-colors hover:border-gray-400"
                 >
-                  <option value="">Tất cả miền</option>
+                  <option value="" className="text-gray-900">Tất cả miền</option>
                   {regions.map((region) => (
-                    <option key={region.slug} value={region.slug}>
+                    <option key={region.slug} value={region.slug} className="text-gray-900">
                       {region.name}
                     </option>
                   ))}
@@ -344,9 +355,9 @@ export default function FilterBar({
                 <select
                   value={filters.province}
                   onChange={(e) => handleFilterChange('province', e.target.value)}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors hover:border-gray-400"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors hover:border-gray-400"
                 >
-                  <option value="">Tất cả tỉnh</option>
+                  <option value="" className="text-gray-900">Tất cả tỉnh</option>
                   {provinces
                     .filter(p => {
                       if (!filters.region) return true;
@@ -354,7 +365,7 @@ export default function FilterBar({
                       return regionData && p.region === regionData.name;
                     })
                     .map((province) => (
-                      <option key={province.slug} value={province.slug}>
+                      <option key={province.slug} value={province.slug} className="text-gray-900">
                         {province.name}
                       </option>
                     ))}
@@ -378,11 +389,11 @@ export default function FilterBar({
                     <select
                       value={selectedOccupationDisplay}
                       onChange={(e) => handleFilterChange('occupation', e.target.value)}
-                      className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 transition-colors hover:border-gray-400"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 transition-colors hover:border-gray-400"
                     >
-                      <option value="">Tất cả nghề</option>
+                      <option value="" className="text-gray-900">Tất cả nghề</option>
                       {occupations.map((occupation) => (
-                        <option key={occupation} value={occupation}>
+                        <option key={occupation} value={occupation} className="text-gray-900">
                           {occupation}
                         </option>
                       ))}
@@ -401,15 +412,14 @@ export default function FilterBar({
                 <select
                   value={filters.ageRange}
                   onChange={(e) => handleFilterChange('ageRange', e.target.value)}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 transition-colors hover:border-gray-400"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 transition-colors hover:border-gray-400"
                 >
-                  <option value="">Tất cả độ tuổi</option>
-                  <option value="duoi-18">Dưới 18 tuổi</option>
-                  <option value="18-20">18-20 tuổi</option>
-                  <option value="21-23">21-25 tuổi</option>
-                  <option value="27-29">25-29 tuổi</option>
-                  <option value="33-35">30-35 tuổi</option>
-                  <option value="tren-35">Trên 35 tuổi</option>
+                  <option value="" className="text-gray-900">Tất cả độ tuổi</option>
+                  {ageRanges.map((range) => (
+                    <option key={range.value} value={range.value} className="text-gray-900">
+                      {range.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             )}
@@ -427,14 +437,14 @@ export default function FilterBar({
                       handleFilterChange('tags', [...filters.tags, e.target.value]);
                     }
                   }}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-colors hover:border-gray-400"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-colors hover:border-gray-400"
                   disabled={tagsLoading}
                 >
-                  <option value="">Chọn đặc điểm</option>
+                  <option value="" className="text-gray-900">Chọn đặc điểm</option>
                   {uniqueTags
                     .filter(tag => !filters.tags.includes(tag.name))
                     .map((tag) => (
-                      <option key={tag.name} value={tag.name}>
+                      <option key={tag.name} value={tag.name} className="text-gray-900">
                         {tag.name} ({tag.count})
                       </option>
                     ))}
